@@ -19,8 +19,8 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Biar animasi background ga bikin scroll */
+            align-items: flex-start; /* FIX SCROLL: Ubah dari center ke flex-start biar teks panjang bisa discroll penuh */
+            overflow-x: hidden; /* FIX SCROLL: Cuma sembunyiin scroll menyamping, vertikal dibiarin bebas */
             position: relative;
         }
 
@@ -30,7 +30,8 @@
             z-index: 10;
             width: 100%;
             max-width: 450px;
-            padding: 20px;
+            padding: 40px 20px; /* Kasih ruang atas bawah biar gak mentok sama ujung layar */
+            margin-top: 5vh; /* Posisikan kontainer agar tetap agak ke tengah pas awal dibuka */
         }
 
         /* Styling Tiap Halaman */
@@ -142,7 +143,7 @@
 
         /* Animasi Background Hati */
         .bg-hearts {
-            position: absolute;
+            position: fixed; /* FIX SCROLL: Diubah jadi fixed supaya animasi love tetep ngikut walau layar discroll ke bawah */
             top: 0;
             left: 0;
             width: 100%;
@@ -189,6 +190,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Backsound Audio -->
+    <audio id="bgm" src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/ghostold.mp3" loop></audio>
 
     <!-- Animasi Background -->
     <div class="bg-hearts" id="bg-hearts"></div>
@@ -242,19 +246,49 @@
             </div>
         </div>
 
-        <!-- PAGE 5: Semangat -->
+        <!-- PAGE 5: Panda Nanya (GIF Baru) -->
         <div id="page5" class="page">
-            <img src="https://media.tenor.com/97y4G6U6YBQAAAAi/pentol-quby.gif" alt="cheer" class="gif-lucu">
-            <h1>Semangat Terus Ya!</h1>
-            <p>Apapun yang lagi kamu usahain sekarang, kerjaan atau hari-hari yang kadang bikin pusing, aku selalu di sini dukung kamu. <br><br>
-            Kalau capek jangan dipaksain, istirahat ya. Jangan kebanyakan overthinking, mending mikirin aku aja wkwk. Pokoknya kalau butuh tempat cerita atau pelukan, aku selalu available 24/7 buat kamu.</p>
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/pandaknp.gif" alt="nanya" class="gif-lucu">
+            <h1>Kok Bisa Ya?</h1>
+            <p>Kadang aku mikir, kok kamu bisa ya betah sama aku selama 4 tahun ini? Wkwkwk padahal aku kan random banget anaknya.</p>
             <div class="btn-group">
-                <button onclick="nextPage(6)">Terakhir nih >></button>
+                <button onclick="nextPage(6)">Lanjut >></button>
             </div>
         </div>
 
-        <!-- PAGE 6: Pertanyaan Jahil -->
+        <!-- PAGE 6: Panda Ngambek (GIF Baru) -->
         <div id="page6" class="page">
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/pandangambek.gif" alt="ngambek" class="gif-lucu">
+            <h1>Maafin Aku Ya 🥺</h1>
+            <p>Pasti sering banget kan aku bikin kamu kesel, ngambek, atau bete tiba-tiba. Maafin ya kalau aku sering nyebelin dan banyak kurangnya.</p>
+            <div class="btn-group">
+                <button onclick="nextPage(7)">Terus terus? 👇</button>
+            </div>
+        </div>
+
+        <!-- PAGE 7: Semprot (GIF Baru) -->
+        <div id="page7" class="page">
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/smprt.gif" alt="semprot" class="gif-lucu">
+            <h1>Kalau Aku Nakal...</h1>
+            <p>Nanti kalau aku mulai nyebelin lagi, semprot aja gapapa wkwk 💦. Asal ngambeknya jangan lama-lama dan jangan pernah bosen sama aku ya!</p>
+            <div class="btn-group">
+                <button onclick="nextPage(8)">Janji ya! 🤝</button>
+            </div>
+        </div>
+
+        <!-- PAGE 8: Semangat -->
+        <div id="page8" class="page">
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/peach12.gif" alt="cheer" class="gif-lucu">
+            <h1>Semangat Terus Ya!</h1>
+            <p>Apapun yang lagi kamu usahain sekarang, aku selalu di sini dukung kamu. <br><br>
+            Kalau capek jangan dipaksain, istirahat ya sayang. Jangan kebanyakan overthinking, mending mikirin aku aja wkwk.</p>
+            <div class="btn-group">
+                <button onclick="nextPage(9)">Terakhir nih >></button>
+            </div>
+        </div>
+
+        <!-- PAGE 9: Pertanyaan Jahil -->
+        <div id="page9" class="page">
             <img src="https://media.tenor.com/qLwG3qZ-B7kAAAAi/pentol-quby.gif" alt="shy" class="gif-lucu">
             <h1>Sekarang jujur...</h1>
             <p>Setelah 4 tahun bareng, kamu masih sayang banget ngga sih sama aku?</p>
@@ -265,8 +299,8 @@
             </div>
         </div>
 
-        <!-- PAGE 7: Ending -->
-        <div id="page7" class="page">
+        <!-- PAGE 10: Ending -->
+        <div id="page10" class="page">
             <img src="https://media.tenor.com/f0uX5kQz9S8AAAAi/pentol-quby.gif" alt="kiss" class="gif-lucu">
             <h1>I Love You More! ❤️</h1>
             <p>Hehehe aku juga sayang bangeeeeet sama April! Sehat-sehat terus ya pacar aku. Mari kita lalui tahun-tahun berikutnya bareng-bareng lagi!</p>
@@ -304,6 +338,12 @@
 
         // Navigasi pindah halaman
         function nextPage(pageNumber) {
+            // Putar lagu pas pertama kali klik (halaman 2)
+            if (pageNumber === 2) {
+                const bgm = document.getElementById('bgm');
+                bgm.play().catch(e => console.log("Audio autoplay dicegah browser"));
+            }
+
             // Sembunyiin semua page
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
@@ -342,7 +382,7 @@
         });
 
         function moveButton() {
-            const container = document.getElementById('page6');
+            const container = document.getElementById('page9'); /* Berubah jadi page 9 */
             const containerRect = container.getBoundingClientRect();
             const btnRect = btnKabur.getBoundingClientRect();
 
@@ -361,7 +401,7 @@
 
         // Fungsi pas pilih sayang banget
         function selesai() {
-            nextPage(7);
+            nextPage(10);
             ledakanHati();
         }
 
