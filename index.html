@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Buat April Tersayang 💖</title>
-    <!-- Font lucu -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -19,22 +19,20 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* FIX SCROLL: Ubah dari center ke flex-start biar teks panjang bisa discroll penuh */
-            overflow-x: hidden; /* FIX SCROLL: Cuma sembunyiin scroll menyamping, vertikal dibiarin bebas */
+            align-items: flex-start; /* FIX SCROLL: Mulai dari atas */
+            overflow-x: hidden; /* Cuma sembunyiin scroll menyamping */
             position: relative;
         }
 
-        /* Container Utama */
         #app {
             position: relative;
             z-index: 10;
             width: 100%;
             max-width: 450px;
-            padding: 40px 20px; /* Kasih ruang atas bawah biar gak mentok sama ujung layar */
-            margin-top: 5vh; /* Posisikan kontainer agar tetap agak ke tengah pas awal dibuka */
+            padding: 40px 20px; 
+            margin-top: 2vh;
         }
 
-        /* Styling Tiap Halaman */
         .page {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -42,7 +40,7 @@
             border-radius: 24px;
             box-shadow: 0 15px 35px rgba(255, 105, 135, 0.2);
             text-align: center;
-            display: none; /* Disembunyikan dulu */
+            display: none; 
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
@@ -60,7 +58,6 @@
             }
         }
 
-        /* Styling Teks & Gambar */
         img.gif-lucu {
             width: 150px;
             height: 150px;
@@ -69,7 +66,7 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             pointer-events: none;
-            animation: floatImg 3s ease-in-out infinite; /* Tambahan animasi melayang */
+            animation: floatImg 3s ease-in-out infinite; 
         }
 
         @keyframes floatImg {
@@ -91,7 +88,6 @@
             margin-bottom: 25px;
         }
 
-        /* Tombol Lucu */
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -141,9 +137,8 @@
             background: #ffebf0;
         }
 
-        /* Animasi Background Hati */
         .bg-hearts {
-            position: fixed; /* FIX SCROLL: Diubah jadi fixed supaya animasi love tetep ngikut walau layar discroll ke bawah */
+            position: fixed; /* Tetap mengapung saat discroll */
             top: 0;
             left: 0;
             width: 100%;
@@ -173,19 +168,8 @@
             }
         }
 
-        /* Khusus tombol yang kabur */
         #btn-kabur {
             transition: top 0.3s ease, left 0.3s ease;
-        }
-
-        /* Confetti Effect */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            opacity: 0;
-            z-index: 100;
         }
     </style>
 </head>
@@ -214,9 +198,9 @@
             <h1>Eits, Tunggu Dulu!</h1>
             <p>Sistem harus verifikasi kalau kamu beneran April pacarku yang gemesin. Pertanyaan: Udah berapa lama sih kita pacaran?</p>
             <div class="btn-group">
-                <button class="outline" onclick="salahTebak()">Baru Sebulan</button>
+                <button class="outline" onclick="salahTebak(event)">Baru Sebulan</button>
                 <button onclick="nextPage(3)">Udah 4 Tahun Dong!</button>
-                <button class="outline" onclick="salahTebak()">Lupa ih :(</button>
+                <button class="outline" onclick="salahTebak(event)">Lupa ih :(</button>
             </div>
         </div>
 
@@ -246,7 +230,7 @@
             </div>
         </div>
 
-        <!-- PAGE 5: Panda Nanya (GIF Baru) -->
+        <!-- PAGE 5: Panda Nanya -->
         <div id="page5" class="page">
             <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/pandaknp.gif" alt="nanya" class="gif-lucu">
             <h1>Kok Bisa Ya?</h1>
@@ -256,7 +240,7 @@
             </div>
         </div>
 
-        <!-- PAGE 6: Panda Ngambek (GIF Baru) -->
+        <!-- PAGE 6: Panda Ngambek -->
         <div id="page6" class="page">
             <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/pandangambek.gif" alt="ngambek" class="gif-lucu">
             <h1>Maafin Aku Ya 🥺</h1>
@@ -266,7 +250,7 @@
             </div>
         </div>
 
-        <!-- PAGE 7: Semprot (GIF Baru) -->
+        <!-- PAGE 7: Semprot -->
         <div id="page7" class="page">
             <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/smprt.gif" alt="semprot" class="gif-lucu">
             <h1>Kalau Aku Nakal...</h1>
@@ -289,7 +273,7 @@
 
         <!-- PAGE 9: Pertanyaan Jahil -->
         <div id="page9" class="page">
-            <img src="https://media.tenor.com/qLwG3qZ-B7kAAAAi/pentol-quby.gif" alt="shy" class="gif-lucu">
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/tos.gif" alt="tos" class="gif-lucu">
             <h1>Sekarang jujur...</h1>
             <p>Setelah 4 tahun bareng, kamu masih sayang banget ngga sih sama aku?</p>
             
@@ -301,7 +285,7 @@
 
         <!-- PAGE 10: Ending -->
         <div id="page10" class="page">
-            <img src="https://media.tenor.com/f0uX5kQz9S8AAAAi/pentol-quby.gif" alt="kiss" class="gif-lucu">
+            <img src="https://raw.githubusercontent.com/feeldreams/feeldreams.github.io/main/tkthao219-bubududu%20(1).gif" alt="bubududu" class="gif-lucu">
             <h1>I Love You More! ❤️</h1>
             <p>Hehehe aku juga sayang bangeeeeet sama April! Sehat-sehat terus ya pacar aku. Mari kita lalui tahun-tahun berikutnya bareng-bareng lagi!</p>
         </div>
@@ -326,7 +310,7 @@
                 
                 container.appendChild(heart);
 
-                // Hapus element setelah animasi selesai biar ga berat
+                // Hapus element setelah animasi selesai
                 setTimeout(() => {
                     heart.remove();
                 }, 8000);
@@ -351,11 +335,14 @@
             // Tampilin page yang dituju
             const targetPage = document.getElementById('page' + pageNumber);
             targetPage.classList.add('active');
+            
+            // Scroll otomatis ke atas tiap ganti halaman biar ga nyangkut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Fungsi kalau milih jawaban salah di pertanyaan 4 tahun
-        function salahTebak() {
-            const btn = event.target;
+        function salahTebak(e) {
+            const btn = e.target;
             const originalText = btn.innerText;
             btn.innerText = "Yeee salah! 😝";
             btn.style.background = "#ffb3c6";
@@ -370,29 +357,26 @@
             }, 1500);
         }
 
-        // Logika tombol kabur buat lucu-lucuan
+        // Logika tombol kabur buat lucu-lucuan di halaman 9
         const btnKabur = document.getElementById('btn-kabur');
         
-        // Pindah pas disorot mouse (Desktop)
         btnKabur.addEventListener('mouseover', moveButton);
-        // Pindah pas disentuh (Mobile)
         btnKabur.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Biar ga sempet keklik
+            e.preventDefault(); 
             moveButton();
         });
 
         function moveButton() {
-            const container = document.getElementById('page9'); /* Berubah jadi page 9 */
+            const container = document.getElementById('page9'); 
             const containerRect = container.getBoundingClientRect();
             const btnRect = btnKabur.getBoundingClientRect();
 
-            // Kalkulasi posisi random di dalam container
-            // Batas maksimal biar tombol ngga keluar dari kotak putih
+            // Kalkulasi posisi random
             const maxX = containerRect.width - btnRect.width - 40;
-            const maxY = 200; // Kasih area vertikal buat lompat
+            const maxY = 200; 
 
             const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY) - 50; // Bisa naik dikit
+            const randomY = Math.floor(Math.random() * maxY) - 50; 
 
             btnKabur.style.position = 'absolute';
             btnKabur.style.left = randomX + 'px';
@@ -416,8 +400,8 @@
                     heart.style.left = 50 + (Math.random() * 20 - 10) + 'vw';
                     heart.style.bottom = '50vh';
                     heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    heart.style.position = 'fixed'; // Tetap fixed di layar
                     
-                    // Force ledakan ke arah random
                     const randomX = (Math.random() * 100 - 50) + 'vw';
                     const randomY = (Math.random() * 100 - 50) + 'vh';
                     
@@ -425,6 +409,7 @@
                     
                     container.appendChild(heart);
                     
+                    // Jeda sebentar sebelum mulai animasi terbang
                     setTimeout(() => {
                         heart.style.transform = `translate(${randomX}, ${randomY}) rotate(${Math.random()*360}deg) scale(0)`;
                         heart.style.opacity = '0';
